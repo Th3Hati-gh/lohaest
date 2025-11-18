@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Борщ",
+    "description": "Традиционный украинский суп со свёклой",
+    "dateAdded": "2024-01-15",
+    "eats": true,
+    "image": "#"
+  },
+  {
+    "id": 2,
+    "name": "Брокколи",
+    "description": "Зелёный овощ, богатый витаминами",
+    "dateAdded": "2024-02-20",
+    "eats": false,
+    "image": "#"
+  },
+  {
+    "id": 3,
+    "name": "Пицца",
+    "description": "Итальянское блюдо с сыром и томатами",
+    "dateAdded": "2024-01-10",
+    "eats": true,
+    "image": "#"
+  },
+  {
+    "id": 4,
+    "name": "Оливки",
+    "description": "Маленькие солёные плоды",
+    "dateAdded": "2024-03-05",
+    "eats": false,
+    "image": "#"
+  },
+  {
+    "id": 5,
+    "name": "Пельмени",
+    "description": "Русское блюдо с мясной начинкой",
+    "dateAdded": "2024-02-01",
+    "eats": true,
+    "image": "#"
+  },
+  {
+    "id": 6,
+    "name": "Грибы",
+    "description": "Лесные грибы в разных видах",
+    "dateAdded": "2024-01-25",
+    "eats": false,
+    "image": "#"
+  },
+  {
+    "id": 7,
+    "name": "Шашлык",
+    "description": "Мясо на шампурах",
+    "dateAdded": "2024-03-10",
+    "eats": true,
+    "image": "#"
+  },
+  {
+    "id": 8,
+    "name": "Морковь",
+    "description": "Оранжевый корнеплод",
+    "dateAdded": "2024-02-15",
+    "eats": false,
+    "image": "#"
+  }
+]

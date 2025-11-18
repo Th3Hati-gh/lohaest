@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Что же ест Льоша?</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(-25%);
+        animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+      }
+      50% {
+        transform: translateY(0);
+        animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+      }
+    }
+    
+    .animate-bounce {
+      animation: bounce 1s infinite;
+      filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-amber-50 to-orange-100">
+  <!-- Header -->
+  <header class="bg-white shadow-md">
+    <div class="max-w-7xl mx-auto px-4 py-6">
+      <h1 class="text-4xl font-bold text-center mb-4 text-gray-800">
+        Что же ест Льоша<span class="inline-block animate-bounce text-yellow-500">?</span>
+      </h1>
+      
+      <!-- Menu -->
+      <nav class="flex justify-center gap-6">
+        <button
+          id="mainTab"
+          class="px-6 py-2 rounded-lg font-semibold transition-all bg-orange-500 text-white shadow-lg"
+        >
+          Main
+        </button>
+        <button
+          id="quizTab"
+          class="px-6 py-2 rounded-lg font-semibold transition-all bg-gray-200 text-gray-700 hover:bg-gray-300"
+        >
+          Quiz
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <div id="mainContent" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"></div>
+    
+    <div id="quizContent" class="hidden flex items-center justify-center h-96">
+      <div class="text-center">
+        <div class="text-6xl mb-4">🚧</div>
+        <h2 class="text-4xl font-bold text-gray-700 mb-2">WIP</h2>
+        <p class="text-xl text-gray-600">Work in Progress</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    let activeTab = 'main';
+    let foodData = [];
+
+    function renderFoodCards() {
+      const container = document.getElementById('mainContent');
+      container.innerHTML = '';
+      
+      foodData.forEach(item => {
+        const card = document.createElement('div');
+        card.className = `rounded-lg shadow-lg overflow-hidden transition-transform hover:scale-105 ${
+          item.eats
+            ? 'bg-green-400 hover:bg-green-500'
+            : 'bg-red-400 hover:bg-red-500'
+        }`;
+        
+        card.innerHTML = `
+          <div class="w-full h-48 bg-white bg-opacity-20 flex items-center justify-center">
+            <span class="text-6xl text-white opacity-50">🍽️</span>
+          </div>
+          
+          <div class="p-6">
+            <h3 class="text-2xl font-bold text-white mb-2">
+              ${item.name}
+            </h3>
+            <p class="text-white mb-4 opacity-90 min-h-12">
+              ${item.description}
+            </p>
+            <div class="flex flex-col gap-2 text-sm">
+              <span class="text-white opacity-75">
+                Добавлено: ${item.dateAdded}
+              </span>
+              <span class="bg-white bg-opacity-30 px-3 py-1 rounded-full text-white font-semibold text-center">
+                ${item.eats ? '✓ Ест' : '✗ Не ест'}
+              </span>
+            </div>
+          </div>
+        `;
+        
+        container.appendChild(card);
+      });
+    }
+
+    function switchTab(tab) {
+      activeTab = tab;
+      
+      const mainTab = document.getElementById('mainTab');
+      const quizTab = document.getElementById('quizTab');
+      const mainContent = document.getElementById('mainContent');
+      const quizContent = document.getElementById('quizContent');
+      
+      if (tab === 'main') {
+        mainTab.className = 'px-6 py-2 rounded-lg font-semibold transition-all bg-orange-500 text-white shadow-lg';
+        quizTab.className = 'px-6 py-2 rounded-lg font-semibold transition-all bg-gray-200 text-gray-700 hover:bg-gray-300';
+        mainContent.classList.remove('hidden');
+        quizContent.classList.add('hidden');
+      } else {
+        mainTab.className = 'px-6 py-2 rounded-lg font-semibold transition-all bg-gray-200 text-gray-700 hover:bg-gray-300';
+        quizTab.className = 'px-6 py-2 rounded-lg font-semibold transition-all bg-orange-500 text-white shadow-lg';
+        mainContent.classList.add('hidden');
+        quizContent.classList.remove('hidden');
+      }
+    }
+
+    document.getElementById('mainTab').addEventListener('click', () => switchTab('main'));
+    document.getElementById('quizTab').addEventListener('click', () => switchTab('quiz'));
+
+    // Load data from JSON file
+    async function loadFoodData() {
+      try {
+        const response = await fetch('json_foods.json');
+        if (!response.ok) {
+          throw new Error('Failed to load food data');
+        }
+        foodData = await response.json();
+        renderFoodCards();
+      } catch (error) {
+        console.error('Error loading food data:', error);
+        document.getElementById('mainContent').innerHTML = `
+          <div class="col-span-full text-center py-12">
+            <div class="text-6xl mb-4">⚠️</div>
+            <h2 class="text-2xl font-bold text-gray-700 mb-2">Ошибка загрузки данных</h2>
+            <p class="text-gray-600">Не удалось загрузить файл json_foods.json</p>
+          </div>
+        `;
+      }
+    }
+
+    // Initialize on page load
+    loadFoodData();
+  </script>
+</body>
+</html>
