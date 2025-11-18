@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Сметана",
+    "description": "Было съедено во время ужина с Драниками",
+    "dateAdded": "18.11.2025",
+    "eats": true,
+    "image": "https://images.prom.ua/3971975470_w1280_h640_3971975470.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Кетчуп",
+    "description": "Льоша сказал",
+    "dateAdded": "18.11.2025",
+    "eats": false,
+    "image": "https://s0.rbk.ru/v6_top_pics/media/img/8/34/756796609042348.webp"
+  },
+  {
+    "id": 3,
+    "name": "Майонез",
+    "description": "Льоша сказал\n(Есть исключение: В маленьком количестве)",
+    "dateAdded": "18.11.2025",
+    "eats": false,
+    "image": "https://здоровое-питание.рф/upload/iblock/c77/qcd4ygejvdj9zh1t9p47ol9pi6teiixa/zagruzhennoe-_-2022_12_27T104550.406.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Томатный соус",
+    "description": "Выберет его вместо Кетчупа",
+    "dateAdded": "18.11.2025",
+    "eats": false,
+    "image": "https://myazina.ru/upload/iblock/ad8/ad8a0bb98b1a0a5a031974963d959c7d.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Горчица",
+    "description": "КАТЕГОРИЧЕСКИ\n           (С) Льоша",
+    "dateAdded": "18.11.2025",
+    "eats": false,
+    "image": "https://static.1000.menu/img/content-v2/12/08/22358/gorchica-iz-poroshka-bystro_1620383187_9_max.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Подлива",
+    "description": "Ест всё кроме подливы",
+    "dateAdded": "18.11.2025",
+    "eats": true,
+    "image": "https://i.ytimg.com/vi/ti6itD0oVMg/hqdefault.jpg"
+  }
+]
